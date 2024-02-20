@@ -1,6 +1,6 @@
 import { set } from "mongoose";
 import React, { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
 
@@ -8,6 +8,7 @@ export default function SignUp() {
 const [formData, setFormData] = useState({});
 const [error, setError] = useState(false);
 const [loading, setLoading] = useState(false);
+const navigate  = useNavigate();
 
 
 const handleChange = (e) => {
@@ -30,10 +31,11 @@ const handleSubmit = async (e) => {
     
     const data = await res.json();
     setLoading(false);
-    if (data.success === false); {   // If there is an error then show it on screen
+    if (data.success === false) {   // If there is an error then show it on screen
       setError(true);
       return;
     }
+    navigate('/sign-in');
     console.log(data); {message: "User created!"};
   } catch (error) {
     setLoading(false);
