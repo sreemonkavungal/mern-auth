@@ -1,6 +1,7 @@
 import { set } from "mongoose";
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
 
@@ -80,6 +81,7 @@ const handleSubmit = async (e) => {
     hover:opacity-95 disabled:opacity-50 uppercase">
     {loading ? 'Loading...' : 'Sign Up'}
     </button>
+    <OAuth/>
     </form>
     <div className="flex gap-2 mt-5">
       <p>Have An Account?</p>
