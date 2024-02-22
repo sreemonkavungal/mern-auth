@@ -1,14 +1,15 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function SignIn() {
 
 // Setting all into one data
 const [formData, setFormData] = useState({});
-const [error, setError] = useState(false);
-const [loading, setLoading] = useState(false);
+const { loading, error } = useSelector((state) => state.user);
+const  dispatch = useDispatch();
 const navigate  = useNavigate();
-
 
 const handleChange = (e) => {
 setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -20,8 +21,7 @@ const handleSubmit = async (e) => {
   e.preventDefault(); 
 
   try {
-    setLoading(true);  // Set loading true when user is submitting the form
-    setError(false);   // Hide any previous errors
+    dispatch(signInStart());     // Dispatching action to start the request
     const res = await fetch('/api/auth/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -29,16 +29,16 @@ const handleSubmit = async (e) => {
     });
     
     const data = await res.json();
-    setLoading(false);
+    
     if (data.success === false) {  // If there is an error then show it on screen
-      setError(true);
+      dispatch(signInFailure(data));
       return;
     }
+    dispatch(signInSuccess(data));
     navigate('/'); // Redirecting user to homepage after successful login
     console.log(data); {message: "SignIn Successfull"};
   } catch (error) {
-    setLoading(false);
-    setError(true);
+    dispatch(signInFailure(error));
   }
 
 };
@@ -78,7 +78,9 @@ const handleSubmit = async (e) => {
       <Link to={"/sign-up"}>
       <span className="text-indigo-600">Sign Up</span></Link>
     </div>
-    <p className="text-red-700 mt-5 flex justify-center">{error && 'Something Went Wrong!'}</p>
+    <p className="text-red-700 mt-5 flex justify-center">
+      {error ? error.message || 'Something Went Wrong!' : ''}
+      </p>
     </div>
   );
 }
