@@ -6,7 +6,7 @@ export default function Header() {
 
   const location = useLocation();
   const isNavLinkActive = (path) => {
-    return location.pathname === path ? 'text-indigo-600' : 'text-blsck';
+    return location.pathname === path ? 'text-indigo-600' : 'text-black';
   };
 
   return (
