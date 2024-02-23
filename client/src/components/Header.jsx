@@ -22,16 +22,17 @@ export default function Header() {
           <Link to='/about' className={`text-sm font-semibold leading-6 ${isNavLinkActive('/about')}`}>
             <li>About</li>
           </Link>
-          {/* <Link to='/sign-in' className={`text-sm font-semibold leading-6 ${isNavLinkActive('/sign-in')}`}>
-            <li>Sign In</li>
-          </Link> */}
+          
           <Link to='/profile'>
             {currentUser ? (
               <img src={currentUser.profilePicture} alt='profile' className='h-7 w-7 rounded-full object-cover' />
             ) : (
-              <li>Sign In</li>
+              <span className={`text-sm font-semibold leading-6 ${isNavLinkActive('/sign-in')}`}>
+              Sign In
+              </span>
             )}
           </Link>
+          
         </ul>
       </div>
     </div>
