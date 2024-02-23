@@ -6,14 +6,14 @@ export default function Header() {
 
   const location = useLocation();
   const isNavLinkActive = (path) => {
-    return location.pathname === path ? 'text-indigo-600' : 'text-gray-900';
+    return location.pathname === path ? 'text-indigo-600' : 'text-blsck';
   };
 
   return (
-    <div className='bg-slate-200'>
-      <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
+    <div className='bg-slate-300'>
+      <div className='flex justify-between items-center max-w-6xl mx-auto p-4'>
         <Link to='/'>
-          {/* <h1 className='font-bold'>auth-test</h1> */}
+         <h1 className='font-bold'>auth-application</h1>
         </Link>
         <ul className='flex gap-5'>
           <Link to='/' className={`text-sm font-semibold leading-6 ${isNavLinkActive('/')}`}>
