@@ -18,10 +18,9 @@ import PrivateRoute from './components/PrivateRoute';
     <Route path="/about" element={<About/>} />
     <Route path="/sign-in" element={<SignIn/>} />
     <Route path="/sign-up" element={<SignUp/>} />
-    <Route path="/profile" element={<Profile/>} />
     <Route element={<PrivateRoute/>}>
-        <Route path='/profile' element={<Profile />} />
-        </Route>
+    <Route path='/profile' element={<Profile />} />
+    </Route>
    </Routes>
    </BrowserRouter>
   )
