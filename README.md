@@ -13,4 +13,6 @@ Welcome to the MERN Authentication Web Application repository! This full-stack w
 - Storage: Firebase Storage
 - Authentication: Firebase Authentication (Google)
 
+  ![Auth App](https://github.com/sreemonkavungal/mern-auth/assets/90373393/b927c723-85cb-4a09-9849-5b5a3493e6f2)
+
 Click Too Visit Website : https://mern-auth-cixd.onrender.com/
